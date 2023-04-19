@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="tabs">
+        <li id="tab1" class="selectedTab">Potato</li>
+        <li id="tab2" class="">Tomato</li>
+        <li id="tab3" class="">Cucumber</li>
+        <li id="tab4" class="">Carrot</li>
+    </ul>
+    <div id="content">
+        <div id="Potato" class="showContent">
+            <p>The potato is a starchy food, a tuber of the plant Solanum tuberosum and is a root vegetable native to
+                the Americas. The plant is a perennial in the nightshade family Solanaceae. Wild potato species can be
+                found from the southern United States to southern Chile.</p>
+        </div>
+        <div id="Tomato" class="">
+            <p>The tomato is the edible berry of the plant Solanum lycopersicum, commonly known as the tomato plant. The
+                species originated in western South America, Mexico, and Central America. The Mexican Nahuatl word
+                tomatl gave rise to the Spanish word tomate, from which the English word tomato derived.</p>
+        </div>
+        <div id="Cucumber" class="">
+            <p>The cucumber is a widely-cultivated creeping vine plant in the family Cucurbitaceae that bears
+                cylindrical to spherical fruits, which are used as culinary vegetables. Considered an annual plant,
+                there are three main types of cucumber—slicing, pickling, and seedless—within which several cultivars
+                have been created.</p>
+        </div>
+        <div id="Carrot" class="">
+            <p>The carrot is a root vegetable, typically orange in color, though purple, black, red, white, and yellow
+                cultivars exist, all of which are domesticated forms of the wild carrot, Daucus carota, native to Europe
+                and Southwestern Asia.</p>
+        </div>
+    </div>
+    <script>
+        $("#tabs>li").click(function(){
+            $("#tabs > *").removeClass("selectedTab");
+            $(this).addClass("selectedTab");
+            $("#content > *").removeClass("showContent");
+            $(`#${[$(this).text()]}`).addClass("showContent")
+        })
+    </script>
+</body>
+
+</html>
