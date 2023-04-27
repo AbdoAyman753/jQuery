@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <style>
+        .nav-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: start ;
+            align-items: center;
+            width: 3vw;
+            height: 100vh;
+            background-color: beige;
+            gap: 10px
+        }
+        .expanded-nav-container{
+            /* justify-content: start !important;
+            width : 10vw  !important; */
+        }
+
+        .nav-items {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .items{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .nav-toggle {
+            display: block;
+            background-color: brown;
+            width: 20px;
+            height: 4px;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        .nav-item {
+            background-color: rgba(0, 0, 0, 0.8);
+            width: 10vw;
+            height: 4vh;
+            text-transform: uppercase;
+            text-decoration: none;
+            text-align: center;
+            color: antiquewhite;
+        }
+
+        .sub-items {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(255, 165, 55);
+            width: 10vw;
+            height: 6vh;
+
+        }
+    </style>
+    <title>Side Bar</title>
+</head>
+
+<body>
+    <div class="nav-container">
+        <div class="nav-toggle"></div>
+
+        <nav class="nav-items">
+            
+            <div class="items">
+                <a class="nav-item" href="#">Home</a>
+                <div class="sub-items">
+                    <a class="nav-sub-item" href="#">Menu</a>
+                    <a class="nav-sub-item" href="#">Store</a>
+                </div>
+            </div>
+            
+            <div class="items">
+                <a class="nav-item" href="#">About</a>
+                <div class="sub-items">
+                    <a class="nav-sub-item" href="#">Emails</a>
+                    <a class="nav-sub-item" href="#">Phones</a>
+                </div>
+            </div>
+            
+
+        </nav>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $(".nav-container").click(function () {
+                if($(".nav-container").hasClass("expanded-nav-container")){
+                    console.log("removing")
+                    $(".nav-container").removeClass("expanded-nav-container").animate({"width":"3vw"},1000);
+                    $(".nav-items").css({"display":"none"});
+                }else{
+                    $(".nav-container").addClass("expanded-nav-container").animate({"width":"10vw"},500);
+                    $(".nav-items").css({"display":"flex"});
+
+
+                }  
+            }).children().click(function(e){
+                e.stopPropagation();
+            })
+        })
+        $(".nav-item").click(function(){
+           console.log( $(this).next("div"))
+            $(this).next(".sub-items").slideToggle(100);
+        })
+    </script>
+</body>
+
+</html>
